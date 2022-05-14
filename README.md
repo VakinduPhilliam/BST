@@ -15,3 +15,6 @@ JavaScript BST Coding Challenges, Problems &amp; Solutions.
  > Balanced BST: is BST balanced/unbalanced.
  
  HINT: A balanced tree is defined to be one such that the heights of the two sub-trees of any node never differ more than one.
+
+> Path to Node: Mapping route path to a BST node.
+
