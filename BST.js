@@ -1,6 +1,7 @@
 /**
- * Binary Search Tree (BST):
+ * Binary Search Tree (BST): 
  * JavaScript BST Coding Challenges, Problems & Solutions.
+ * Time Complexity of a BST: O(log n).
  * > Insert: insert new node into BST.
  * > Search: find data node inside BST.
  * > Tree Depth: measure maximum depth of BST.
@@ -9,6 +10,8 @@
  * > Balanced BST: is BST balanced/unbalanced.
  *   HINT: A balanced tree is defined to be one such that the heights of the 
  *   two sub-trees of any node never differ more than one.
+ * > Path to Node: Mapping route path to a BST node.
+ * >
  */
 
 //Node class
@@ -130,6 +133,29 @@ class BST {
         if (left === -1 || right === -1 || Math.abs(left - right) > 1) return -1;
         return Math.max(left, right);
     }
+    //path to bst node
+    path(n){
+
+        let route=[]
+        
+        function mapPath(node,n){
+            if (node.left || node.right) {
+                route.push(node.data);
+            }
+            if (node.data === n) {
+                route.push(node.data);
+                return;
+            }
+            if (node.left) {
+                mapPath(node.left, n);
+            }
+            if (node.right) {
+                mapPath(node.right, n);
+            }
+        }
+        mapPath(this.root, n);
+        return route
+    }
 }
 
 const tree = new BST() // initialize tree
@@ -150,4 +176,6 @@ console.log(tree.validBST()) // check validity of bst
 console.log(tree.lca(3,6)) // find lowest common ancestor of two nodes
 
 console.log(tree.isBalanced()) // check if bst is balanced
+
+console.log(tree.path(6)) // map route path of bst node
 
